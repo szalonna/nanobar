@@ -1,15 +1,14 @@
-/* http://nanobar.micronube.com/  ||  https://github.com/jacoborus/nanobar/    MIT LICENSE */
+/* https://github.com/szalonna/nanobar/    MIT LICENSE */
 var Nanobar = (function () {
 
 	'use strict';
 	var addCss, animation, transEvent, createBar, Nanobar,
-		css = '.nanobar{float:left;width:100%;height:4px;z-index:9999;}.nanobarbar{width:0;height:100%;float:left;transition:all .3s;}',
 		head = document.head || document.getElementsByTagName( 'head' )[0];
 
-
 	// Create and insert style element in head if not exists
-	addCss = function () {
-		var s = document.getElementById( 'nanobar-style' );
+	addCss = function(h){
+		var s = document.getElementById( 'nanobar-style' ),
+			css = '.nanobar{float:left;width:100%;height:' + h + ';z-index:9999;}.nanobarbar{width:0;height:100%;float:left;transition:all .3s;}';
 
 		if (s === null) {
 			s = document.createElement( 'style' );
@@ -24,8 +23,7 @@ var Nanobar = (function () {
 				s.appendChild( document.createTextNode( css ));
 			}
 		}
-	}
-
+	};
 
 	// crossbrowser transition animation
 	animation = function (){
@@ -47,8 +45,6 @@ var Nanobar = (function () {
 	// get specific browser animation transition
 	transEvent = animation();
 
-
-
 	createBar = function ( cont ) {
 		// create progress element
 		var bar = document.createElement( 'div' );
@@ -57,9 +53,8 @@ var Nanobar = (function () {
 		bar.setAttribute( 'on' , '1');
 		cont.cont.appendChild( bar );
 
-
 		// detect transitions ends
-		transEvent && bar.addEventListener( transEvent, function() {
+		transEvent && bar.addEventListener(transEvent, function() {
 			if (bar.style.width === '100%' && bar.getAttribute( 'on' ) === '1' ) {
 				bar.setAttribute( 'on' , 0);
 
@@ -75,9 +70,7 @@ var Nanobar = (function () {
 		});
 
 		return bar;
-	}
-
-
+	};
 
 	Nanobar = function (opt) {
 
@@ -86,10 +79,11 @@ var Nanobar = (function () {
 
 		// set options
 		opts.bg = opts.bg || '#000';
+		opts.height = opts.height || "4px";
 		this.bars = [];
 
 		// append style
-		addCss();
+		addCss(opts.height);
 
 		// create bar container
 		cont = this.cont = document.createElement( 'div' );
@@ -114,14 +108,11 @@ var Nanobar = (function () {
 		return this.init();
 	};
 
-
-
 	Nanobar.prototype.init = function () {
 		// create and insert bar in DOM and this.bars array
 		var bar =  createBar( this );
 		this.bars.unshift( bar);
 	};
-
 
 	Nanobar.prototype.go = function (p) {
 		// expand bar
@@ -135,6 +126,3 @@ var Nanobar = (function () {
 
 	return Nanobar;
 })();
-
-
-module.exports = Nanobar;

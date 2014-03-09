@@ -53,6 +53,7 @@ var nanobar = new Nanobar( options );
 - `bg` `<String>`: (optional) background css property, '#000' by default
 - `id` `<String>`: (optional) id for **nanobar** div
 - `target` `<DOM Element>`: (optional) Where to put the progress bar, **nanobar** will be fixed to top of document if `target` is `null`
+- `height` `<Integer>`: (optional) height of progress bar, 4px by default
 
 
 ### Move bar

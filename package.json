@@ -1,6 +1,6 @@
 {
-  "name": "nanobar",
-  "version": "0.0.6",
+  "name": "nanobar2",
+  "version": "0.0.6.1",
   "description": "Very lightweight js progress bars (for browsers)",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:jacoborus/nanobar.git"
+    "url": "git@github.com:szalonna/nanobar.git"
   },
   "keywords": [
     "progressbar",
@@ -16,10 +16,9 @@
     "js",
     "html"
   ],
-  "author": "Jacobo Tabernero jacobo@xarope.eu",
+  "author": "Jozsef Sebestyen szalonnamester@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jacoborus/nanobar/issues"
-  },
-  "homepage": "http://nanobar.micronube.com"
+    "url": "https://github.com/szalonna/nanobar/issues"
+  }
 }
